@@ -3,22 +3,41 @@
 
 #include "SDL.h"
 #include <string>
+#include <iostream>
 
 class MetaGame
 {
 public:
-    // MetaGame() : platform_used("unknown") {}
+    MetaGame() : platformUsed(std::string())
+    {
+        platformUsed = getPlatform();
+    }
+
+    /**
+     * Sets the user's system platfrom to the private variable platformUsed.
+     * Returns the platform as a std::string.
+     */
     std::string getPlatform();
+    void printPlatform();
 
 private:
-    std::string platform_used;
-}
+    std::string platformUsed;
+};
 
-std::string
-MetaGame::getPlatform()
+std::string MetaGame::getPlatform()
 {
-    // ** How to covert a pointer to a char into a C++ string?
-    const char *SDL_GetPlatform(void);
+    const char *platform = SDL_GetPlatform();
+    std::string p(platform);
+    platformUsed = p;
+    return platformUsed;
+};
+
+void MetaGame::printPlatform()
+{
+    if (platformUsed != "")
+        std::cout << "Platform Detected: " << platformUsed << std::endl;
+    else
+        std::cout << "No System Platform Detected." << std::endl;
 }
 
 #endif
