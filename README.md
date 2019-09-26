@@ -55,33 +55,25 @@ The project reads data from an external file or writes data to a file as part of
 
 ### 1
 
-```
-The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
-```
+> The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
 
 To meet this requirement, a `MetaGame` class was created (inside `metagame.h`) to hold information about the system platform. The class uses the member functions `getPlatform` and `printPlatform` to fetch and printout the user's detected system platform.
 
 ### 2
 
-```
-All class data members are explicitly specified as public, protected, or private.
-```
+> All class data members are explicitly specified as public, protected, or private.
 
 Within `metagame.h`, the private variable `platformUsed` (line 19) is used to store the user's detected system. No other class can mutate this variable.
 
 ### 3
 
-```
-All class members that are set to argument values are initialized through member initialization lists.
-```
+> All class members that are set to argument values are initialized through member initialization lists.
 
 Within `metagame.h` (line 11) the default argument for the private variable `platformUsed` is a null string which is set within the class's initiaziation list.
 
 ### 4
 
-```
-All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
-```
+> All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
 
 The [C++ Guide by Google](https://google.github.io/styleguide/cppguide.html#Function_Comments) was used to for any needed documentation. An example can be found within `metagame.h` (line 16) above the function declaration of `getPlatform` where a simple comment is used to describe what the function does.
 
