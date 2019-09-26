@@ -9,7 +9,6 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
       random_w(0, static_cast<int>(grid_width)),
       random_h(0, static_cast<int>(grid_height))
 {
-  snake.SetStartingSpeed();
   PlaceFood();
 }
 
@@ -55,6 +54,11 @@ void Game::Run(Controller const &controller, Renderer &renderer,
       SDL_Delay(target_frame_duration - frame_duration);
     }
   }
+}
+
+void Game::UpdateStartSpeed()
+{
+  snake.SetStartingSpeed();
 }
 
 void Game::PlaceFood()

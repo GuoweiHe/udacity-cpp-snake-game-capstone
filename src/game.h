@@ -15,6 +15,7 @@ public:
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  void UpdateStartSpeed();
 
 private:
   Snake snake;
