@@ -1,4 +1,33 @@
-# CPPND: Capstone Snake Game Example
+# Udacity C++ Nanodegree
+
+## `Project: Capstone Snake Game Clone`
+
+# Overview
+
+This C++ project is the fifth and final project of the Udacity C++ Nanodegree.
+The source code has been heavily adapted from the provided starter code located at (Udacity's repo)[https://github.com/udacity/CppND-Capstone-Snake-Game].
+The code base can be divided architecturally and functionally into four distinct class-based components:
+
+- Renderer component is responsible for rendering the state of the game using the popular [SDL library](https://www.libsdl.org/)
+
+- Game component constructs and maintains the game board and placement of the game elements like the snake and food.
+
+- Snake component constructs and maintains the snake object as it moves across the board gaining points and checking if it ran into itself.
+
+- Controller component receives input from the user in order to control movement of the snake.
+
+Once the game starts and creates the `Game`, `Controller`, and `Snake` objects, the game continues to loop through each component as it grabs input from the user, `Controller`, updates the state of the `Game`, and graphically renderers the state of the game, `Render`.
+
+Upon lauching the game, the user is first greeted with the detected system platform.
+
+![platform](imgs/platform.png)
+
+The user is then asked for the starting speed of the `snake`
+
+![startingSpeed](imgs/selectSpeed.png)
+
+The game board launches after the user provides a valid speed and the user is able to play the game by moving the snake around with the arrow keys.
+![gameBoartd](imgs/gameBoard.png)
 
 ## Dependencies for Running Locally
 
@@ -23,37 +52,11 @@
 3. Compile: `cmake .. && make`
 4. Run it: `./snakeGame`.
 
-The README describes the project you have built. aka an overview of your code structure
-
-The README indicates which rubric points are addressed. The README also indicates where in the code (i.e. files and line numbers) that the rubric points are addressed.
-an explanation of how your submission satisfies the necessary rubric
-
----
-
-The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
-All class data members are explicitly specified as public, protected, or private.
-All class members that are set to argument values are initialized through member initialization lists.
-All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
-
-- Create a new class called MetaGame which will be used to get/set and store information about the game. Like platform detection
-
-The project uses multithreading.
-
-- Main can start a task that is responsible for outputting interesting cout stuff
-
-The project accepts input from a user as part of the necessary operation of the program.
-
-- App can ask for difficulty setting before beginning game.
-- App can ask user if they want to see the platform detected.
-
-The project reads data from an external file or writes data to a file as part of the necessary operation of the program.
-
-- App can save the results of a game to a file.
-- App can save each step of the game in order to replay or relive a previous game.
-
 # Rubric Items Matched
 
 ### 1
+
+### `Object Oriented Programming - The project uses Object Oriented Programming techniques.`
 
 > The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
 
@@ -61,11 +64,15 @@ To meet this requirement, a `MetaGame` class was created (inside `metagame.h`) t
 
 ### 2
 
+### `Object Oriented Programming - Classes use appropriate access specifiers for class members.`
+
 > All class data members are explicitly specified as public, protected, or private.
 
 Within `metagame.h`, the private variable `platformUsed` (line 19) is used to store the user's detected system. No other class can mutate this variable.
 
 ### 3
+
+### `Object Oriented Programming - Class constructors utilize member initialization lists.`
 
 > All class members that are set to argument values are initialized through member initialization lists.
 
@@ -73,8 +80,16 @@ Within `metagame.h` (line 11) the default argument for the private variable `pla
 
 ### 4
 
+### `Object Oriented Programming - Classes abstract implementation details from their interfaces.`
+
 > All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
 
-The [C++ Guide by Google](https://google.github.io/styleguide/cppguide.html#Function_Comments) was used to for any needed documentation. An example can be found within `metagame.h` (line 16) above the function declaration of `getPlatform` where a simple comment is used to describe what the function does.
+The [C++ Guide by Google](https://google.github.io/styleguide/cppguide.html#Function_Comments) was used to for any needed documentation. An example can be found within `metagame.h` (line 16) above the function declaration of `getPlatform` where a simple comment is used to describe what the function does. Also, a function comment can be found in `snake.h` line 25.
 
 ### 5
+
+### `Loops, Functions, I/O - The project accepts user input and processes the input.`
+
+> The project accepts input from a user as part of the necessary operation of the program.
+
+The user has the option to select the starting speed of the snake. A Game class member function `UpdateStartSpeed` (main.cpp line 23) is called and this member function encapsulates the Game's private data member `snake` and calls the Snake class member function `SetStartingSpeed` (game.cpp line 61). As this point, according to the function declaration comments (`snake.h` line 25), the function `SetStartingSpeed` first asks the user for a starting speed within an acceptable, pre-defined range. The function then proceeds to validate the user's input and assign it to the Snake's private member `speed`.
